@@ -1,5 +1,3 @@
-import Button from "@/components/global/Button/Button";
-import UserForm from "@/components/pageSpecific/UserForm/UserForm";
 import React from "react";
 import Link from "next/link";
 import Layout from "@/components/global/Layout/Layout";
@@ -13,17 +11,15 @@ const HomePage: React.FC = () => {
         </h1>
         <div>
           <Link href={"user/login"}>
-            <button className="bg-red-500 text-black p-2 rounded m-2 hover:bg-blue-700">
+            <button className="w-40 font-bold bg-stone-200 text-black p-2 rounded m-2 hover:bg-stone-300 border-2 border-orange-900">
               Entrar
             </button>
           </Link>
           <Link href="user/signup">
-            <button className="bg-blue-500 text-white p-2 rounded m-2 hover:bg-blue-700">
+            <button className="w-40 font-bold bg-orange-500 text-black p-2 rounded m-2 hover:bg-orange-600">
               Criar Cadastro
             </button>
           </Link>
-          {/* <Button onClick={handleLogin} label="Entrar" /> */}
-          {/* <Button onClick={handleSignup} label="Criar Cadastro" /> */}
         </div>
       </div>
     </Layout>

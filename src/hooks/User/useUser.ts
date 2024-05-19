@@ -10,12 +10,14 @@ export const useUser = () => {
   const fetchUserData = async (codigoUsuario: string) => {
     try {
       const data: IUser = await getUserData(codigoUsuario);
-      console.log("🚀 ~ fetchUserData ~ data:", data);
+
       showAlert(
         "Seja Bem-Vindo!",
         "Esperamos que voce se encontre bem",
-        "success"
+        "success",
+        "/user/login"
       );
+      return data;
     } catch (error) {
       showAlert("Ops", "Usuario nao encontrado no sistema", "error");
     }
@@ -24,8 +26,13 @@ export const useUser = () => {
   const registerUser = async (nome: string) => {
     try {
       const data: IRegisterUser = await createUser(nome);
-      console.log("🚀 ~ registerUser ~ data:", data);
-      showAlert("Parabens!", "Cadastro realizado com sucesso!", "success");
+      showAlert(
+        "Parabens!",
+        "Cadastro realizado com sucesso!",
+        "success",
+        "/user/login"
+      );
+      return 201;
     } catch (error) {
       showAlert("Ops", "Algo deu errado no sistema", "error");
     }
