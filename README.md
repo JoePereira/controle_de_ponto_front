@@ -23,9 +23,7 @@
     <a href="https://prettier.io/" target="_BLANK">
         <img align="center" alt="Prettier" height="70" width="70" src="https://w7.pngwing.com/pngs/164/151/png-transparent-prettier-hd-logo.png">
     </a>
-    <a href="https://prettier.io/" target="_BLANK">
-        <img align="center" alt="Prettier" height="70" width="70" src="https://w7.pngwing.com/pngs/152/247/png-transparent-jest-hd-logo.png">
-    </a>
+   
 </div>
 
 <h2>🚀 Funcionalidades: </h2>
@@ -43,51 +41,11 @@
   Alertas de sucesso e erro com SweetAlert2
  </li>
 </ul>
-    
-<h3>Times: </h3>
-<ul>
- <li>
-  id
- </li>
- <li>
-  usuarioId
- </li>
- <li>
-  horarioEntrada
- </li>
- <li>
-  horarioSaida
- </li>
-</ul>
-
-<h2>🚀 Como Rodar os testes: </h2>
-<h3>User Test: </h3>
-<ul>
- <li>
-  Comando: npm run test -- src/tests/usuarios/userController.test.ts
- </li>
-</ul>
-
-<h3>Times Test: </h3>
-<ul>
- <li>
-  Comando: npm run test -- src/tests/entradas/timesController.test.ts
- </li>
-</ul>
 
 <h2>🚀 Como Rodar a aplicacao: </h2>
 <ul>
  <li>
-  npm install
- </li>
- <li>
-  cd src/shared/infra
- </li>
- <li>
-  npx prisma generate
- </li>
- <li>
-  cd ../../..
+  npm install --legacy-peer-deps
  </li>
  <li>
   npm run start:dev
