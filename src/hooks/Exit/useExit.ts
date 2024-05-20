@@ -1,11 +1,11 @@
-import { IExit } from "@/services/api/ExitService/interfaces/IExit";
+import { IGetExits } from "@/services/api/ExitService/interfaces/IExit";
 import { useState } from "react";
 import { createExit, getExits } from "@/services/api/ExitService/exitService";
 import { showAlert } from "@/utils/alert";
 import { getEntries } from "@/services/api/EntryService/entryService";
 
 export const useExit = () => {
-  const [exits, setExits] = useState<IExit[]>([]);
+  const [exits, setExits] = useState<IGetExits[]>([]);
   const [totalExitis, setTotalExitis] = useState<number>(0);
 
   const createExitForUser = async (codigoUsuario: string) => {
@@ -24,17 +24,18 @@ export const useExit = () => {
 
   const fetchExits = async (
     codigoUsuario: string,
-    page: number,
-    pageSize: number
+    take: number,
+    skip: number
   ) => {
     try {
-      const response = await getExits(codigoUsuario, page, pageSize);
-      setExits(response.data);
-      setTotalExitis(response.total);
+      const response = await getExits(codigoUsuario, take, skip);
+      setExits(response);
+      console.log("🚀 ~ useExit ~ response:", response);
+      // setTotalExitis(response.total);
     } catch {
-      showAlert("Erro", "Falha ao buscar os horários de saida", "error");
+      return null;
     }
   };
 
-  return { exits, totalExitis, createExit, fetchExits };
+  return { exits, totalExitis, createExitForUser, fetchExits };
 };

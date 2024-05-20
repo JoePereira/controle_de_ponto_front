@@ -14,27 +14,25 @@ export const useUser = () => {
       showAlert(
         "Seja Bem-Vindo!",
         "Esperamos que voce se encontre bem",
-        "success",
-        "/user/login"
+        "success"
       );
       return data;
-    } catch (error) {
-      showAlert("Ops", "Usuario nao encontrado no sistema", "error");
+    } catch (error: any) {
+      showAlert("Ops", `${error.response.data.message}`, "error");
     }
   };
 
   const registerUser = async (nome: string) => {
     try {
       const data: IRegisterUser = await createUser(nome);
-      showAlert(
-        "Parabens!",
-        "Cadastro realizado com sucesso!",
-        "success",
-        "/user/login"
-      );
-      return 201;
+      showAlert("Parabens!", `${data.message}`, "success");
+      return { status: 201, data };
     } catch (error) {
-      showAlert("Ops", "Algo deu errado no sistema", "error");
+      showAlert(
+        "Ops",
+        "Algo deu errado no sistema, tente novamente mais tarde",
+        "error"
+      );
     }
   };
 

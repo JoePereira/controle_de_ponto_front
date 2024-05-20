@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface UserContextType {
+  usuarioId: string;
+  setUsuarioId: (codigo: string) => void;
   codigoUsuario: string;
   setCodigoUsuario: (codigo: string) => void;
 }
@@ -12,10 +14,13 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const [usuarioId, setUsuarioId] = useState<string>("");
   const [codigoUsuario, setCodigoUsuario] = useState<string>("");
 
   return (
-    <UserContext.Provider value={{ codigoUsuario, setCodigoUsuario }}>
+    <UserContext.Provider
+      value={{ usuarioId, codigoUsuario, setCodigoUsuario, setUsuarioId }}
+    >
       {children}
     </UserContext.Provider>
   );

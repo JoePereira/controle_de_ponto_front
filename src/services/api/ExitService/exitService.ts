@@ -1,22 +1,23 @@
 import { Api } from "@/services/apiService";
-import { IExit } from "./interfaces/IExit";
-import { IGetExits } from "./interfaces/IGetExits";
+import { IExit, IGetExits } from "./interfaces/IExit";
 
-export const createExit = async (codigoUsuario: string): Promise<IExit> => {
-  const { data } = await Api.post<IExit>("exit/createExit", {
-    codigoUsuario,
+export const createExit = async (usuarioId: string): Promise<IExit> => {
+  const { data } = await Api.post<IExit>("times/createExit", {
+    usuarioId,
   });
   return data;
 };
 
 export const getExits = async (
-  codigoUsuario: string,
-  page: number,
-  pageSize: number
-): Promise<IGetExits> => {
-  const { data } = await Api.post(`exit/getExities/${codigoUsuario}`, {
-    page,
-    pageSize,
-  });
+  usuarioId: string,
+  skip: number,
+  take: number
+): Promise<IGetExits[]> => {
+  const { data } = await Api.get(
+    `times/getAllExitTimesByUsuarioId/${usuarioId}&${take}&${skip}`
+  );
+  // console.log("🚀 ~ data:", data);
+  // console.log("🚀 ~ take:", take);
+  // console.log("🚀 ~ skip:", skip);
   return data;
 };

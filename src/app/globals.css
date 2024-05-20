@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -9,7 +11,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+* {
+  font-family: "Montserrat", sans-serif !important;
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: #151f2b;

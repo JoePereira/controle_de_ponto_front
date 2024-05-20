@@ -8,6 +8,9 @@ const Login: React.FC = () => {
   return (
     <Layout>
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <h1 className="text-4xl font-bold mb-6 text-center">
+          Login no Sistema
+        </h1>
         <div className="w-72 flex flex-row items-center justify-start">
           <h1 className="text-lg font-thin mb-6 ">Ponto </h1>
           <h1 className="text-lg font-bold mb-6 ml-1">Ilumeo </h1>

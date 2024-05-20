@@ -1,18 +1,18 @@
 import { useUser } from "@/hooks/User/useUser";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const RegisterUserForm: React.FC = () => {
   const [nome, setNome] = useState<string>("");
   const [cadastroAprovado, setcadastroAprovado] = useState<boolean>(false);
   const { registerUser } = useUser();
 
+  const router = useRouter();
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const status = await registerUser(nome);
-    if (status === 201) {
-      setcadastroAprovado(true);
-    }
+    await registerUser(nome);
   };
 
   return (
@@ -38,16 +38,16 @@ const RegisterUserForm: React.FC = () => {
         >
           Registrar
         </button>
-        {cadastroAprovado && (
-          <Link href={"/user/login"}>
-            <button
-              type="button"
-              className="w-72 h-10 font-bold bg-green-600 text-black p-2 mt-4 rounded hover:bg-green-700"
-            >
-              Fazer Login
-            </button>
-          </Link>
-        )}
+        <div className="flex mt-2 ">
+          <p className="text-sm ">Ja possui um cadastro?</p>
+          <button
+            type="button"
+            className="text-sm  ml-1 font-bold text-orange-500"
+            onClick={() => router.push("/user/login")}
+          >
+            Clique aqui
+          </button>
+        </div>
       </form>
     </>
   );

@@ -6,7 +6,7 @@ import { useUserContext } from "@/contexts/UserContext";
 const UserForm: React.FC = () => {
   const [codigoUsr, setCodigoUsr] = useState<string>("");
   const { fetchUserData } = useUser();
-  const { setCodigoUsuario } = useUserContext();
+  const { setCodigoUsuario, setUsuarioId } = useUserContext();
 
   const router = useRouter();
 
@@ -14,7 +14,8 @@ const UserForm: React.FC = () => {
     event.preventDefault();
     const user = await fetchUserData(codigoUsr);
     if (user) {
-      setCodigoUsuario(user.id);
+      setUsuarioId(user.id);
+      setCodigoUsuario(user.codigoUsuario);
     }
     if (user) {
       router.push("/entry");
@@ -31,6 +32,7 @@ const UserForm: React.FC = () => {
           Código do usuário
         </label>
         <input
+          role="textbox"
           type="text"
           id="codigoUsr"
           value={codigoUsr}
@@ -44,6 +46,16 @@ const UserForm: React.FC = () => {
         >
           Confirmar
         </button>
+        <div className="flex mt-2 ">
+          <p className="text-sm ">Nao possui um cadastro?</p>
+          <button
+            type="button"
+            className="text-sm  ml-1 font-bold text-orange-500"
+            onClick={() => router.push("/user/signup")}
+          >
+            Clique aqui
+          </button>
+        </div>
       </form>
     </div>
   );

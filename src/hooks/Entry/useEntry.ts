@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IEntry } from "@/services/api/EntryService/interfaces/IEntry";
+import { IGetEntries } from "@/services/api/EntryService/interfaces/IEntry";
 import {
   createEntry,
   getEntries,
@@ -7,12 +7,12 @@ import {
 import { showAlert } from "@/utils/alert";
 
 export const useEntry = () => {
-  const [entries, setEntries] = useState<IEntry[]>([]);
-  const [totalEntries, setTotalEntries] = useState<number>(0);
+  const [entries, setEntries] = useState<IGetEntries[]>([]);
+  const [totalEntries, setTotalEntries] = useState<number>(11);
 
-  const createEntryForUser = async (codigoUsuario: string) => {
+  const createEntryForUser = async (usuarioId: string) => {
     try {
-      const entry = await createEntry(codigoUsuario);
+      const entry = await createEntry(usuarioId);
       showAlert(
         "Registrado",
         "Hora de entrada registrada com sucesso!",
@@ -21,21 +21,19 @@ export const useEntry = () => {
       return entry;
     } catch (error) {
       showAlert("Erro", "Falha ao registrar hora de entrada", "error");
-      throw error;
     }
   };
 
   const fetchEntries = async (
     codigoUsuario: string,
-    page: number,
-    pageSize: number
+    take: number,
+    skip: number
   ) => {
     try {
-      const response = await getEntries(codigoUsuario, page, pageSize);
-      setEntries(response.data);
-      setTotalEntries(response.total);
+      const response = await getEntries(codigoUsuario, take, skip);
+      setEntries(response);
     } catch (error) {
-      showAlert("Erro", "Falha ao buscar horários de entrada", "error");
+      return null;
     }
   };
 

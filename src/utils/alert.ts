@@ -3,8 +3,7 @@ import Swal from "sweetalert2";
 export const showAlert = (
   title: string,
   text: string,
-  icon: "success" | "error",
-  route: string = ""
+  icon: "success" | "error"
 ) => {
   Swal.fire({
     title,

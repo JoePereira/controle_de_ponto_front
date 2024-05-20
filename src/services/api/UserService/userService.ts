@@ -3,7 +3,9 @@ import { IUser } from "./interfaces/IUser";
 import { Api } from "@/services/apiService";
 
 export const getUserData = async (codigoUsuario: string): Promise<IUser> => {
-  const { data } = await Api.get<IUser>(`user/getUserById/${codigoUsuario}`);
+  const { data } = await Api.get<IUser>(
+    `user/getUserByCodigoUsuario/${codigoUsuario}`
+  );
   return data;
 };
 

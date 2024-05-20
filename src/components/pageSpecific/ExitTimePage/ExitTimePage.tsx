@@ -4,38 +4,36 @@ import Button from "@/components/global/Button/Button";
 import TimeDisplay from "@/components/global/TimeDisplay/TimeDisplay";
 import TimeList from "@/components/global/TimeList/TimeList";
 import { useUserContext } from "@/contexts/UserContext";
-import { useEntry } from "@/hooks/Entry/useEntry";
+import { useExit } from "@/hooks/Exit/useExit";
 import React, { useState, useEffect } from "react";
 
-const EntryTimePage: React.FC = () => {
+const ExitTimePage: React.FC = () => {
   const { codigoUsuario, usuarioId } = useUserContext();
 
   const [skip, setSkip] = useState<number>(0);
-  // const [skip, setSkip] = useState<number>(1);
 
-  const { entries, totalEntries, createEntryForUser, fetchEntries } =
-    useEntry();
+  const { exits, totalExitis, createExitForUser, fetchExits } = useExit();
 
-  const handleEntry = async () => {
-    await createEntryForUser(usuarioId);
-    fetchEntries(usuarioId, skip, 10);
+  const handleExit = async () => {
+    await createExitForUser(usuarioId);
+    fetchExits(usuarioId, skip, 10);
   };
 
   useEffect(() => {
-    fetchEntries(usuarioId, skip, 10);
-  }, [codigoUsuario, skip]);
+    fetchExits(usuarioId, skip, 10);
+  }, [usuarioId, skip]);
 
   const prevPage = () => {
     if (skip > 1) {
       const prevPage = skip - 1;
       setSkip(prevPage);
-      fetchEntries(usuarioId, prevPage, 10);
+      fetchExits(usuarioId, prevPage, 10);
     }
   };
   const nextPage = () => {
     const nextPage = skip + 1;
     setSkip(nextPage);
-    fetchEntries(usuarioId, nextPage, 10);
+    fetchExits(usuarioId, nextPage, 10);
   };
 
   return (
@@ -51,12 +49,12 @@ const EntryTimePage: React.FC = () => {
           </div>
           <TimeDisplay />
           <p className="text-left font-bold text-xs mb-4">Horas de hoje</p>
-          <Button label="Hora de Entrada" onClick={handleEntry} />
+          <Button label="Hora de saída" onClick={handleExit} />
           <div className="w-96 pb-1">
             <p className="text-left font-bold text-xs">Dias anteriores</p>
           </div>
-          {entries.length > 0 ? (
-            <TimeList times={entries.map((entry) => entry.horarioEntrada)} />
+          {exits.length > 0 ? (
+            <TimeList times={exits.map((entry) => entry.horarioSaida)} />
           ) : (
             <div className="flex p-5 rounded-lg shadow bg-slate-400">
               <div>
@@ -74,12 +72,12 @@ const EntryTimePage: React.FC = () => {
                   Nao ha registros
                 </h2>
                 <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                  Seu usuario nao contem nenhum registro de entrada
+                  Seu usuario nao contem nenhum registro de saída
                 </p>
               </div>
             </div>
           )}
-          {totalEntries >= 9 && (
+          {totalExitis >= 11 && (
             <div className="w-96 flex justify-center flex-row mx-auto">
               <button
                 type="button"
@@ -130,4 +128,4 @@ const EntryTimePage: React.FC = () => {
   );
 };
 
-export default EntryTimePage;
+export default ExitTimePage;
