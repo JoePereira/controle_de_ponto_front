@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const Api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3300/",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://controle-de-ponto-back.onrender.com/",
 });
