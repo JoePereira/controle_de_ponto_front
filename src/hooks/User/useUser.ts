@@ -17,8 +17,8 @@ export const useUser = () => {
         "success"
       );
       return data;
-    } catch (error: any) {
-      showAlert("Ops", `${error.response.data.message}`, "error");
+    } catch (error) {
+      showAlert("Ops", `usuario nao registrado`, "error");
     }
   };
 

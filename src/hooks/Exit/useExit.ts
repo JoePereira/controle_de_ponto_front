@@ -2,11 +2,9 @@ import { IGetExits } from "@/services/api/ExitService/interfaces/IExit";
 import { useState } from "react";
 import { createExit, getExits } from "@/services/api/ExitService/exitService";
 import { showAlert } from "@/utils/alert";
-import { getEntries } from "@/services/api/EntryService/entryService";
 
 export const useExit = () => {
   const [exits, setExits] = useState<IGetExits[]>([]);
-  const [totalExitis, setTotalExitis] = useState<number>(0);
 
   const createExitForUser = async (codigoUsuario: string) => {
     try {
@@ -37,5 +35,5 @@ export const useExit = () => {
     }
   };
 
-  return { exits, totalExitis, createExitForUser, fetchExits };
+  return { exits, createExitForUser, fetchExits };
 };

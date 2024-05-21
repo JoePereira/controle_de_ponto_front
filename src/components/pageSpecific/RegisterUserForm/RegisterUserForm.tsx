@@ -1,11 +1,9 @@
 import { useUser } from "@/hooks/User/useUser";
-import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const RegisterUserForm: React.FC = () => {
   const [nome, setNome] = useState<string>("");
-  const [cadastroAprovado, setcadastroAprovado] = useState<boolean>(false);
   const { registerUser } = useUser();
 
   const router = useRouter();

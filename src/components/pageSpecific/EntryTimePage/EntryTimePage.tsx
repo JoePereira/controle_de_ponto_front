@@ -13,7 +13,7 @@ const EntryTimePage: React.FC = () => {
   const [skip, setSkip] = useState<number>(0);
   // const [skip, setSkip] = useState<number>(1);
 
-  const { entries, totalEntries, createEntryForUser, fetchEntries } =
+  const { entries, createEntryForUser, fetchEntries } =
     useEntry();
 
   const handleEntry = async () => {
@@ -25,18 +25,18 @@ const EntryTimePage: React.FC = () => {
     fetchEntries(usuarioId, skip, 10);
   }, [codigoUsuario, skip]);
 
-  const prevPage = () => {
-    if (skip > 1) {
-      const prevPage = skip - 1;
-      setSkip(prevPage);
-      fetchEntries(usuarioId, prevPage, 10);
-    }
-  };
-  const nextPage = () => {
-    const nextPage = skip + 1;
-    setSkip(nextPage);
-    fetchEntries(usuarioId, nextPage, 10);
-  };
+  // const prevPage = () => {
+  //   if (skip > 1) {
+  //     const prevPage = skip - 1;
+  //     setSkip(prevPage);
+  //     fetchEntries(usuarioId, prevPage, 10);
+  //   }
+  // };
+  // const nextPage = () => {
+  //   const nextPage = skip + 1;
+  //   setSkip(nextPage);
+  //   fetchEntries(usuarioId, nextPage, 10);
+  // };
 
   return (
     <React.Fragment>
@@ -79,7 +79,7 @@ const EntryTimePage: React.FC = () => {
               </div>
             </div>
           )}
-          {totalEntries >= 9 && (
+          {/* {totalEntries >= 9 && (
             <div className="w-96 flex justify-center flex-row mx-auto">
               <button
                 type="button"
@@ -123,7 +123,7 @@ const EntryTimePage: React.FC = () => {
                 </div>
               </button>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </React.Fragment>

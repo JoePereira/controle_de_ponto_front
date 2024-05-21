@@ -2,7 +2,7 @@
 
 import Layout from "@/components/global/Layout/Layout";
 import UserForm from "@/components/pageSpecific/UserForm/UserForm";
-import React, { useState } from "react";
+import React from "react";
 
 const Login: React.FC = () => {
   return (

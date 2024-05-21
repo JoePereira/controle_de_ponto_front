@@ -11,8 +11,9 @@ const ExitTimePage: React.FC = () => {
   const { codigoUsuario, usuarioId } = useUserContext();
 
   const [skip, setSkip] = useState<number>(0);
+  
 
-  const { exits, totalExitis, createExitForUser, fetchExits } = useExit();
+  const { exits, createExitForUser, fetchExits } = useExit();
 
   const handleExit = async () => {
     await createExitForUser(usuarioId);
@@ -23,18 +24,18 @@ const ExitTimePage: React.FC = () => {
     fetchExits(usuarioId, skip, 10);
   }, [usuarioId, skip]);
 
-  const prevPage = () => {
-    if (skip > 1) {
-      const prevPage = skip - 1;
-      setSkip(prevPage);
-      fetchExits(usuarioId, prevPage, 10);
-    }
-  };
-  const nextPage = () => {
-    const nextPage = skip + 1;
-    setSkip(nextPage);
-    fetchExits(usuarioId, nextPage, 10);
-  };
+  // const prevPage = () => {
+  //   if (skip > 1) {
+  //     const prevPage = skip - 1;
+  //     setSkip(prevPage);
+  //     fetchExits(usuarioId, prevPage, 10);
+  //   }
+  // };
+  // const nextPage = () => {
+  //   const nextPage = skip + 1;
+  //   setSkip(nextPage);
+  //   fetchExits(usuarioId, nextPage, 10);
+  // };
 
   return (
     <React.Fragment>
@@ -77,7 +78,7 @@ const ExitTimePage: React.FC = () => {
               </div>
             </div>
           )}
-          {totalExitis >= 11 && (
+          {/* {totalExitis >= 11 && (
             <div className="w-96 flex justify-center flex-row mx-auto">
               <button
                 type="button"
@@ -121,7 +122,7 @@ const ExitTimePage: React.FC = () => {
                 </div>
               </button>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </React.Fragment>

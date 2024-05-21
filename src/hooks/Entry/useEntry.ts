@@ -8,7 +8,6 @@ import { showAlert } from "@/utils/alert";
 
 export const useEntry = () => {
   const [entries, setEntries] = useState<IGetEntries[]>([]);
-  const [totalEntries, setTotalEntries] = useState<number>(11);
 
   const createEntryForUser = async (usuarioId: string) => {
     try {
@@ -37,5 +36,5 @@ export const useEntry = () => {
     }
   };
 
-  return { entries, totalEntries, createEntryForUser, fetchEntries };
+  return { entries, createEntryForUser, fetchEntries };
 };
