@@ -2,6 +2,9 @@
 
 <p>Esta é uma aplicação de controle de ponto desenvolvida com Next.js, React, TypeScript, Tailwind CSS e Prisma. O projeto segue os princípios SOLID</p>
 
+<h2>🚀 Teste a aplicacao na web: </h2>
+https://controle-de-ponto-front-n5uf.vercel.app/
+
 <h2>🚀 Tecnologias: </h2>
 
  <div style="display: inline_block"><br>
@@ -43,11 +46,14 @@
 </ul>
 
 <h2>🚀 Como Rodar a aplicacao: </h2>
-<ul>
+<ol>
  <li>
-  npm install --legacy-peer-deps
+  npm install
  </li>
  <li>
-  npm run start:dev
+  npm run build
  </li>
-</ul>
+ <li>
+  npm run start
+ </li>
+</ol>
